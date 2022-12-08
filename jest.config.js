@@ -1,5 +1,6 @@
 module.exports = {
   ...configDefaults(),
+  verbose: true,
   coverageThreshold: coverageThreshold(50),
 }
 

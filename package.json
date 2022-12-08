@@ -1,17 +1,17 @@
 {
   "name": "@mattiasahlsen/ts-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "clean": "tsc --build --clean",
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "pub": "cp package.json dist && npm publish ./dist --access public --dry-run && rm dist/package.json"
   },
   "devDependencies": {
+    "@types/jest": "^29.2.4",
     "jest": "^29.3.1",
-    "ts-jest": "^29.0.3",
-    "@types/jest": "^29.2.4"
-  },
-  "dependencies": {}
+    "jest-mock-extended": "^3.0.1",
+    "ts-jest": "^29.0.3"
+  }
 }
