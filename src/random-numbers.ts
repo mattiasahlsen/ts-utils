@@ -1,4 +1,4 @@
-export interface ISeedablePseudoRandomNumberGenerator {
+export interface IRandomNumberGenerator {
   randomNumber(max?: number): number
   randomInt(max: number): number
   resetSeed(seed: number): void
@@ -7,9 +7,7 @@ export interface ISeedablePseudoRandomNumberGenerator {
 /**
  * A simple seedable random number generator in typescript.
  */
-export class RandomNumberGenerator
-  implements ISeedablePseudoRandomNumberGenerator
-{
+export class RandomNumberGenerator implements IRandomNumberGenerator {
   seed: number
   constructor(seed: number) {
     this.seed = seed

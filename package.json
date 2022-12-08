@@ -6,7 +6,8 @@
     "clean": "tsc --build --clean",
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "pub": "cp package.json dist && npm publish ./dist --access public --dry-run && rm dist/package.json"
+    "pub": "cp package.json dist && npm publish ./dist --access public && rm dist/package.json",
+    "dry-pub": "cp package.json dist && npm publish ./dist --access public --dry-run && rm dist/package.json"
   },
   "devDependencies": {
     "@types/jest": "^29.2.4",

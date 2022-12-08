@@ -1,6 +1,6 @@
 import { getPromiseWithResolve } from './get-promise-with-resolve'
 
-export class DependencyManager<
+export interface IDependencyManager<
   ServiceKey extends string = string,
   ServiceKeyToServiceMap extends Record<string, unknown> = Record<
     string,
@@ -8,6 +8,23 @@ export class DependencyManager<
   >,
   Service = ServiceKeyToServiceMap[ServiceKey]
 > {
+  registerService(serviceKey: ServiceKey, service: Service): void
+  getDependency<Key extends ServiceKey>(
+    serviceKey: Key,
+    options: { from: ServiceKey }
+  ): Promise<ServiceKeyToServiceMap[Key]>
+  findCircularDependencies(serviceKey: ServiceKey): void
+}
+
+export class DependencyManager<
+  ServiceKey extends string = string,
+  ServiceKeyToServiceMap extends Record<string, unknown> = Record<
+    string,
+    unknown
+  >,
+  Service = ServiceKeyToServiceMap[ServiceKey]
+> implements IDependencyManager<ServiceKey, ServiceKeyToServiceMap, Service>
+{
   private serviceStore = new Map<
     ServiceKey,
     {
