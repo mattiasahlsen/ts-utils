@@ -1,12 +1,12 @@
 {
   "name": "@mattiasahlsen/ts-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "test": "jest",
     "clean": "tsc --build --clean",
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "pub": "cp package.json dist && npm publish ./dist --access public"
+    "pub": "cp package.json dist && npm publish ./dist --access public --dry-run && rm dist/package.json"
   },
   "devDependencies": {
     "jest": "^29.3.1",
